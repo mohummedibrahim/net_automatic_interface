@@ -64,10 +64,10 @@ public class AutomaticInterfaceGenerator : IIncrementalGenerator
             }
 
             var typeNamespace = type.ContainingNamespace.IsGlobalNamespace
-                ? $"${Guid.NewGuid().ToString()}"
+                ? $"${Guid.NewGuid()}"
                 : $"{type.ContainingNamespace}";
 
-            var code = Builder.BuildInterfaceFor(type);
+            var code = AutomaticInterfaceCore.Builder.BuildInterfaceFor(type);
 
             var hintName = $"{typeNamespace}.I{type.Name}";
             context.AddSource(hintName, code);

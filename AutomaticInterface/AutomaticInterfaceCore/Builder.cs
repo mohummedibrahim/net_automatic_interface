@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace AutomaticInterface;
+namespace AutomaticInterfaceCore;
 
 public static class Builder
 {
@@ -44,8 +44,7 @@ public static class Builder
         var generationAttribute = typeSymbol
             .GetAttributes()
             .FirstOrDefault(x =>
-                x.AttributeClass != null
-                && x.AttributeClass.Name.Contains(AutomaticInterfaceGenerator.DefaultAttributeName)
+                x.AttributeClass != null                
             );
 
         if (generationAttribute == null)

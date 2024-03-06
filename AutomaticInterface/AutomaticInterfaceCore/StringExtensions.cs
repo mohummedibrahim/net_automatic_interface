@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AutomaticInterface
+namespace AutomaticInterfaceCore
 {
     public static class StringExtensions
     {
