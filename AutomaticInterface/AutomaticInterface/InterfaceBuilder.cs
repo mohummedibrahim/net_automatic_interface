@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace AutomaticInterfaceCore
+namespace AutomaticInterface
 {
     internal sealed record PropertyInfo(
         string Name,
