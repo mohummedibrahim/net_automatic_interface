@@ -182,9 +182,19 @@ public static class Builder
                 ? ((ParameterSyntax)syntaxReference.GetSyntax()).Identifier.Text
                 : x.Name;
 
+        var refKindText = x.RefKind switch
+        {
+            RefKind.Ref => "ref ",
+            RefKind.Out => "out ",
+            RefKind.In => "in ",
+            // Not sure why RefReadOnly and In both has Enum index 3.
+            // RefKind.RefReadOnly => "ref readonly ", 
+            _ => string.Empty,
+        };
+
         if (!x.HasExplicitDefaultValue)
         {
-            return $"{x.Type.ToDisplayString()} {name}";
+            return $"{refKindText}{x.Type.ToDisplayString()} {name}";
         }
 
         var optionalValue = x.ExplicitDefaultValue switch
@@ -195,7 +205,7 @@ public static class Builder
             null => " = null",
             _ => $" = {x.ExplicitDefaultValue}"
         };
-        return $"{x.Type.ToDisplayString()} {name}{optionalValue}";
+        return $"{refKindText}{x.Type.ToDisplayString()} {name}{optionalValue}";
     }
 
     private static void AddPropertiesToInterface(

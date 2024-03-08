@@ -46,6 +46,11 @@ namespace AutomaticInterfaceExample
             return "Ok";
         }
 
+        public string OutMethod(out string x)
+        {
+            return x = "out";
+        }
+
         public Task<string?> ASync(string x, string y)
         {
             return Task.FromResult("");
